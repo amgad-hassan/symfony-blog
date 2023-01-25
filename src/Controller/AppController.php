@@ -13,7 +13,7 @@ class AppController extends AbstractController{
     * @Route("/")
     */
     public function index(){
-        dd('amgad');
-        return  $this->render('base.html.twig');
+        $users = ['amgad','manaar'];
+        return  $this->render('base.html.twig',['users' => $users]);
     }
 }
