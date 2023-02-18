@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Service\RandomNumberService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,9 +15,9 @@ class AccountAuthController extends  AbstractController
      * @Route("/login",name="login_page")
      * @return Response
      */
-    public function loginAction(LoggerInterface $loggerInterface)
+    public function loginAction(RandomNumberService $randomNumberService,LoggerInterface $loggerInterface)
     {
-        $loggerInterface->info('test logger');
+        $loggerInterface->debug(sprintf('this random from %s',$randomNumberService->getNumberRandom(10,100)));
         return $this->render('login.html.twig');
     }
 
