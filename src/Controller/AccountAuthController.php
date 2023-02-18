@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,8 +14,9 @@ class AccountAuthController extends  AbstractController
      * @Route("/login",name="login_page")
      * @return Response
      */
-    public function loginAction()
+    public function loginAction(LoggerInterface $loggerInterface)
     {
+        $loggerInterface->info('test logger');
         return $this->render('login.html.twig');
     }
 
