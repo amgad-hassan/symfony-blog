@@ -15,9 +15,10 @@ class AccountAuthController extends  AbstractController
      * @Route("/login",name="login_page")
      * @return Response
      */
-    public function loginAction(RandomNumberService $randomNumberService,LoggerInterface $loggerInterface)
+    public function loginAction(RandomNumberService $randomNumberService)
     {
-        $loggerInterface->debug(sprintf('this random from %s',$randomNumberService->getNumberRandom(10,100)));
+        $number = $randomNumberService->getNumberRandom(1000,10000000);
+        
         return $this->render('login.html.twig');
     }
 
